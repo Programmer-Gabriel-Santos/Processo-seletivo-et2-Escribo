@@ -1,8 +1,8 @@
 export class BaseError extends Error {
-	constructor(
-		statusCode,
-		message
-	) {
-		super(message);
-	}
+    constructor(
+        statusCode,
+        message
+    ) {
+        super(message);
+    }
 }

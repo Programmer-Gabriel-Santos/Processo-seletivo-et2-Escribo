@@ -1,5 +1,5 @@
 export class IdGeneratorMock {
     generate = () => {
-        return "id-mock"
-    }
+        return "id-mock";
+    };
 }

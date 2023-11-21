@@ -1,17 +1,17 @@
 export class HashManagerMock {
     hash = async (plaintext) => {
-        if (plaintext == "bananinha") {
-            return "hash-bananinha"
+        if (plaintext == "senha-mock") {
+            return "hash-senha-mock";
         }
 
-        return "hash-mock"
-    }
+        return "hash-mock";
+    };
 
     compare = async (plaintext, hash) => {
-        if (plaintext == "bananinha" && hash == "hash-bananinha") {
-            return true
+        if (plaintext == "senha-mock" && hash == "hash-senha-mock") {
+            return true;
         }
 
-        return false
-    }
+        return false;
+    };
 }
