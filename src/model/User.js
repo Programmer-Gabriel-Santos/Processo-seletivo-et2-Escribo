@@ -1,3 +1,8 @@
+export const UserRole = {
+    ADMIN: "ADMIN",
+    NORMAL: "NORMAL",
+};
+
 export class User {
     constructor(
         id,
@@ -5,6 +10,7 @@ export class User {
         email,
         senha,
         telefones,
+        role,
         data_criacao,
         data_atualizacao,
         ultimo_login
@@ -14,6 +20,7 @@ export class User {
         this.email = email;
         this.senha = senha;
         this.telefones = telefones;
+        this.role = role;
         this.data_criacao = data_criacao;
         this.data_atualizacao = data_atualizacao;
         this.ultimo_login = ultimo_login;
@@ -51,6 +58,10 @@ export class User {
         return this.ultimo_login;
     }
 
+    getRole() {
+        return this.role;
+    }
+
     setNome(nome) {
         this.nome = nome;
     }
@@ -77,5 +88,9 @@ export class User {
 
     setUltimoLogin(ultimo_login) {
         this.ultimo_login = ultimo_login;
+    }
+
+    setRole(role) {
+        this.role = role;
     }
 }
