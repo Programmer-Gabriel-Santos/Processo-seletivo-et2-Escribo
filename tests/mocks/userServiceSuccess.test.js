@@ -34,4 +34,24 @@ describe("testando casos de sucesso para UserService", () => {
         const response = await userService.signup(input);
         expect(response).toStrictEqual(expectedResponse);
     });
+
+    test("testando o método login, deve obter sucesso retornando um objeto como resposta", async () => {
+        expect.assertions(1);
+
+        const input = {
+            email: "user1@escribo.com",
+            senha: "senha-mock",
+        };
+
+        const expectedResponse = {
+            id: "id-mock",
+            data_criacao: "22/11/2023",
+            data_atualizacao: "22/11/2023",
+            ultimo_login: "22/11/2023",
+            token: "token-mock",
+        };
+
+        const response = await userService.login(input);
+        expect(response).toStrictEqual(expectedResponse);
+    });
 });
