@@ -62,7 +62,7 @@ export class UserService {
             }
         });
 
-        const userDB = await this.userDatabase.findByEmail(email);
+        const userDB = await this.userDatabase.selectUserByEmail(email);
 
         if (userDB) {
             throw new DuplicateEmailError();
@@ -116,7 +116,7 @@ export class UserService {
             throw new ParamsError();
         }
 
-        const userDB = await this.userDatabase.findByEmail(email);
+        const userDB = await this.userDatabase.selectUserByEmail(email);
 
         if (!userDB) {
             throw new AuthenticationError();
@@ -158,7 +158,7 @@ export class UserService {
             throw new AuthorizationError();
         }
 
-        const userDB = await this.userDatabase.findById(payload.id);
+        const userDB = await this.userDatabase.selectUserById(payload.id);
 
         const infoUser = {
             id: userDB.id,

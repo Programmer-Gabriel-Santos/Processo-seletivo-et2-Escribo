@@ -5,9 +5,16 @@ export class UserDataBaseMock extends BaseDataBase {
     
     TABLE_USERS = "Escribo_users";
 
-    findByEmail = async (email) => {
+    selectUserByEmail = async (email) => {
 
         const user = users.find(user => user.email === email) ;
+
+        return user;
+    };
+
+    selectUserById = async (id) => {
+
+        const user = users.find(user => user.id === id);
 
         return user;
     };

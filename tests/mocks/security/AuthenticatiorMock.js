@@ -7,14 +7,6 @@ export class AuthenticatorMock {
 
     getTokenPayload = (token) => {
 
-        // if (token === "token-mock") {
-        //     const normalPayload = {
-        //         id: "id-mock",
-        //         role: UserRole.NORMAL
-        //     };
-        //     return normalPayload;
-        // }
-
         switch (token) {
         case "token-mock": {
             const userPayload = {

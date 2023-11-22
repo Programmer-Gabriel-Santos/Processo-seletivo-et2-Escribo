@@ -3,6 +3,7 @@ import { HashManagerMock } from "./security/HashManagerMock";
 import { IdGeneratorMock } from "./security/IdGeneratorMock";
 import { UserDataBaseMock } from "./data/UserDataBaseMock";
 import { UserService } from "../../src/services/UserService";
+import { users } from "./data/usersData";
 
 
 describe("testando casos de sucesso para UserService", () => {
@@ -52,6 +53,25 @@ describe("testando casos de sucesso para UserService", () => {
         };
 
         const response = await userService.login(input);
+        expect(response).toStrictEqual(expectedResponse);
+    });
+
+    test("testando o método getInfoUser, deve obter sucesso retornando um objeto como resposta", async () => {
+        expect.assertions(1);
+
+        const token = "token-mock2";
+
+        const expectedResponse = {
+            id: users[1].id,
+            nome: users[1].nome,
+            email: users[1].email,
+            telefones: users[1].telefones,
+            data_criacao: users[1].data_criacao,
+            data_atualizacao: users[1].data_atualizacao,
+            ultimo_login: users[1].ultimo_login
+        };
+
+        const response = await userService.getInfoUser(token);
         expect(response).toStrictEqual(expectedResponse);
     });
 });
