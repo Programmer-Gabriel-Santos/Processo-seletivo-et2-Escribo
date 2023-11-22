@@ -65,6 +65,34 @@ export class UserService {
         if (userDB) {
             throw new DuplicateEmailError();
         }
+
+        const id = this.idGenerator.generate();
+        const hashedPassword = await this.hashManager.hash(senha);
+
+        const options = { timeZone: "America/Sao_Paulo" };
+        const date = new Date().toLocaleDateString("pt-BR", options);
+
+        const user = new User(id, nome, email, hashedPassword, telefones, UserRole.NORMAL, date, date, date);
+
+        await this.userDatabase.insertUser(user);
+
+
+        const payload = {
+            id: user.getId(),
+            role: user.getRole()
+        };
+
+        const token = this.authenticator.generateToken(payload);
+
+        const response = {
+            id: user.getId(),
+            data_criacao: user.getDataCriacao(),
+            data_atualizacao: user.getDataAtualizacao(),
+            ultimo_login: user.getUltimoLogin(),
+            token
+        };
+
+        return response;
     }
 
 }
