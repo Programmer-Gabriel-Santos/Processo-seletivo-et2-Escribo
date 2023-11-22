@@ -1,3 +1,4 @@
+import { AuthenticationError } from "../errors/AuthenticationError";
 import { DuplicateEmailError } from "../errors/DuplicateEmailError";
 import { EmailInvalid } from "../errors/EmailInvalid";
 import { ParamsError } from "../errors/ParamsError";
@@ -95,4 +96,52 @@ export class UserService {
         return response;
     }
 
+    async login(input) {
+        const { email, senha } = input;
+
+        if(!email || !senha) {
+            throw new ParamsError();
+        }
+
+        if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+            throw new EmailInvalid();
+        }
+
+        if (typeof senha !== "string") {
+            throw new ParamsError();
+        }
+
+        if(senha.length < 6) {
+            throw new ParamsError();
+        }
+
+        const userDB = await this.userDatabase.findByEmail(email);
+
+        if(!userDB) {
+            throw new AuthenticationError();
+        }
+
+        const isPasswordIsCorrect = await this.hashManager.compare(senha, userDB.senha);
+
+        if(!isPasswordIsCorrect) {
+            throw new AuthenticationError();
+        }
+
+        const payload = {
+            id: userDB.id,
+            role: userDB.role
+        };
+
+        const token = this.authenticator.generateToken(payload);
+
+        const response = {
+            id: userDB.id,
+            data_criacao: userDB.data_criacao,
+            data_atualizacao: userDB.data_atualizacao,
+            ultimo_login: userDB.ultimo_login,
+            token
+        };
+
+        return response;
+    }
 }
