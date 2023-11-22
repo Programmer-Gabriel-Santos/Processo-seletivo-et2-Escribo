@@ -313,5 +313,36 @@ describe("Teste de unidade de erro para UserService - login", () => {
             }
         }
     });
+});
 
+describe("Teste de unidade de erro para UserService - getInfoUser", () => {
+    test("testando erro para token faltando", async () => {
+        expect.assertions(2);
+    
+        try {
+            const token = "";
+            await userService.getInfoUser(token);
+    
+        } catch (error) {
+            if (error instanceof BaseError) {
+                expect(error.message).toBe("Não autorizado");
+                expect(error.statusCode).toBe(401);
+            }
+        }
+    });
+
+    test("testando erro para token inválido", async () => {
+        expect.assertions(2);
+    
+        try {
+            const token = "token";
+            await userService.getInfoUser(token);
+    
+        } catch (error) {
+            if (error instanceof BaseError) {
+                expect(error.message).toBe("Não autorizado");
+                expect(error.statusCode).toBe(401);
+            }
+        }
+    });
 });

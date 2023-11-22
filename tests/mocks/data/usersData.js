@@ -13,9 +13,9 @@ export const users = [
         ultimo_login: "22/11/2023",
     },
     {
-        id: "id-mock",
+        id: "id-mock2",
         nome: "user test 2",
-        email: "user3@escribo.com",
+        email: "user2@escribo.com",
         senha: "hash-senha-mock",
         telefones: [{ numero: "123456788", ddd: "21" }],
         role: UserRole.NORMAL,

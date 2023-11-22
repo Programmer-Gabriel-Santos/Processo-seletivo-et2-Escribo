@@ -1,4 +1,5 @@
 import { AuthenticationError } from "../errors/AuthenticationError";
+import { AuthorizationError } from "../errors/AuthorizationError";
 import { DuplicateEmailError } from "../errors/DuplicateEmailError";
 import { EmailInvalid } from "../errors/EmailInvalid";
 import { ParamsError } from "../errors/ParamsError";
@@ -99,7 +100,7 @@ export class UserService {
     async login(input) {
         const { email, senha } = input;
 
-        if(!email || !senha) {
+        if (!email || !senha) {
             throw new ParamsError();
         }
 
@@ -111,19 +112,19 @@ export class UserService {
             throw new ParamsError();
         }
 
-        if(senha.length < 6) {
+        if (senha.length < 6) {
             throw new ParamsError();
         }
 
         const userDB = await this.userDatabase.findByEmail(email);
 
-        if(!userDB) {
+        if (!userDB) {
             throw new AuthenticationError();
         }
 
         const isPasswordIsCorrect = await this.hashManager.compare(senha, userDB.senha);
 
-        if(!isPasswordIsCorrect) {
+        if (!isPasswordIsCorrect) {
             throw new AuthenticationError();
         }
 
@@ -143,5 +144,32 @@ export class UserService {
         };
 
         return response;
+    }
+
+    async getInfoUser(token) {
+
+        if (!token) {
+            throw new AuthorizationError();
+        }
+
+        const payload = this.authenticator.getTokenPayload(token);
+
+        if (!payload) {
+            throw new AuthorizationError();
+        }
+
+        const userDB = await this.userDatabase.findById(payload.id);
+
+        const infoUser = {
+            id: userDB.id,
+            nome: userDB.nome,
+            email: userDB.email,
+            telefones: userDB.telefones,
+            data_criacao: userDB.data_criacao,
+            data_atualizacao: userDB.data_atualizacao,
+            ultimo_login: userDB.ultimo_login
+        };
+
+        return infoUser;
     }
 }

@@ -1,3 +1,5 @@
+import { UserRole } from "../../../src/model/User";
+
 export class AuthenticatorMock {
     generateToken = () => {
         return "token-mock";
@@ -5,13 +7,35 @@ export class AuthenticatorMock {
 
     getTokenPayload = (token) => {
 
-        if (token === "token-mock") {
-            const normalPayload = {
+        // if (token === "token-mock") {
+        //     const normalPayload = {
+        //         id: "id-mock",
+        //         role: UserRole.NORMAL
+        //     };
+        //     return normalPayload;
+        // }
+
+        switch (token) {
+        case "token-mock": {
+            const userPayload = {
                 id: "id-mock",
-                role: "user"
+                role: UserRole.NORMAL
             };
-            return normalPayload;
+
+            return userPayload;
         }
 
+        case "token-mock2": {
+            const payload2 = {
+                id: "id-mock2",
+                role: UserRole.NORMAL
+            };
+
+            return payload2;
+        }
+
+        default:
+            return null;
+        }
     };
 }
