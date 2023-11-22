@@ -1,7 +1,8 @@
 import { BaseDataBase } from "../../../src/dataBase/BaseDataBase";
-import { users} from "./data";
+import { users } from "./usersData";
 
 export class UserDataBaseMock extends BaseDataBase {
+    
     TABLE_USERS = "Escribo_users";
 
     findByEmail = async (email) => {

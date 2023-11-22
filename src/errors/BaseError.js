@@ -4,5 +4,6 @@ export class BaseError extends Error {
         message
     ) {
         super(message);
+        this.statusCode = statusCode;
     }
 }

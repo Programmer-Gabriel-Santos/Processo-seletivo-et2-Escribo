@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "node --watch ./src/server.js",
-    "test": "jest --detectOpenHandles",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },
