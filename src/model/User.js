@@ -1,81 +1,96 @@
+export const UserRole = {
+    ADMIN: "ADMIN",
+    NORMAL: "NORMAL",
+};
+
 export class User {
-	constructor(
-		id,
-		nome,
-		email,
-		senha,
-		telefones,
-		data_criacao,
-		data_atualizacao,
-		ultimo_login
-	) {
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.telefones = telefones;
-		this.data_criacao = data_criacao;
-		this.data_atualizacao = data_atualizacao;
-		this.ultimo_login = ultimo_login;
-	}
+    constructor(
+        id,
+        nome,
+        email,
+        senha,
+        telefones,
+        role,
+        data_criacao,
+        data_atualizacao,
+        ultimo_login
+    ) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefones = telefones;
+        this.role = role;
+        this.data_criacao = data_criacao;
+        this.data_atualizacao = data_atualizacao;
+        this.ultimo_login = ultimo_login;
+    }
 
-	getId() {
-		return this.id;
-	}
+    getId() {
+        return this.id;
+    }
 
-	getNome() {
-		return this.nome;
-	}
+    getNome() {
+        return this.nome;
+    }
 
-	getEmail() {
-		return this.email;
-	}
+    getEmail() {
+        return this.email;
+    }
 
-	getSenha() {
-		return this.senha;
-	}
+    getSenha() {
+        return this.senha;
+    }
 
-	getTelefones() {
-		return this.telefones;
-	}
+    getTelefones() {
+        return this.telefones;
+    }
 
-	getDataCriacao() {
-		return this.data_criacao;
-	}
+    getDataCriacao() {
+        return this.data_criacao;
+    }
 
-	getDataAtualizacao() {
-		return this.data_atualizacao;
-	}
+    getDataAtualizacao() {
+        return this.data_atualizacao;
+    }
 
-	getUltimoLogin() {
-		return this.ultimo_login;
-	}
+    getUltimoLogin() {
+        return this.ultimo_login;
+    }
 
-	setNome(nome) {
-		this.nome = nome;
-	}
+    getRole() {
+        return this.role;
+    }
 
-	setEmail(email) {
-		this.email = email;
-	}
+    setNome(nome) {
+        this.nome = nome;
+    }
 
-	setSenha(senha) {
-		this.senha = senha;
-	}
+    setEmail(email) {
+        this.email = email;
+    }
 
-	setTelefones(telefones) {
-		this.telefones = telefones;
-	}
+    setSenha(senha) {
+        this.senha = senha;
+    }
 
-	setDataCriacao(data_criacao) {
-		this.data_criacao = data_criacao;
-	}
+    setTelefones(telefones) {
+        this.telefones = telefones;
+    }
 
-	setDataAtualizacao(data_atualizacao) {
-		this.data_atualizacao = data_atualizacao;
-	}
+    setDataCriacao(data_criacao) {
+        this.data_criacao = data_criacao;
+    }
 
-	setUltimoLogin(ultimo_login) {
-		this.ultimo_login = ultimo_login;
-	}
+    setDataAtualizacao(data_atualizacao) {
+        this.data_atualizacao = data_atualizacao;
+    }
+
+    setUltimoLogin(ultimo_login) {
+        this.ultimo_login = ultimo_login;
+    }
+
+    setRole(role) {
+        this.role = role;
+    }
 }

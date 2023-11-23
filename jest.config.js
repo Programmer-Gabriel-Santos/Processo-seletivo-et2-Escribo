@@ -1,7 +1,15 @@
 
 export default {
-	roots: ["<rootDir>/tests"],
-	transform: {  "^.+\\.tsx?$": "ts-jest",},
-	testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-	moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+    roots: ["./tests"],
+    testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.js?$",
+    moduleFileExtensions: ["js", "json", "node"],
+    testEnvironment: "node",
+    transform: {
+        "^.+\\.js$": "babel-jest",
+    },
+    globals: {
+        "ts-jest": {
+            useESM: true,
+        },
+    },
 };

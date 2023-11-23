@@ -5,26 +5,26 @@ dotenv.config();
 
 export class BaseDataBase {
 
-	constructor() {
-		this._connection = null;
-	}
+    constructor() {
+        this._connection = null;
+    }
 
-	_getConnection() {
-		const DB_PORT = Number(process.env.DB_PORT);
-        
-		if (!this._connection) {
-			this._connection = knex({
-				client: "mysql2",
-				connection: {
-					host: process.env.DB_HOST,
-					user: process.env.DB_USER,
-					database: process.env.DB_DATABASE,
-					password: process.env.DB_PASSWORD,
-					port: DB_PORT,
-				}
-			});
-		}
+    _getConnection() {
+        const DB_PORT = Number(process.env.DB_PORT);
+       
+        if (!this._connection) {
+            this._connection = knex({
+                client: "mysql2",
+                connection: {
+                    host: process.env.DB_HOST,
+                    user: process.env.DB_USER,
+                    password: process.env.DB_PASSWORD,
+                    database: process.env.DB_DATABASE,
+                    port: DB_PORT,
+                }
+            });
+        }
 
-		return this._connection;
-	}
+        return this._connection;
+    }
 }

@@ -1,9 +1,9 @@
-import { BaseError } from "./BaseError";
+import { BaseError } from "./BaseError.js";
 
 export class ExpiredTokenError extends BaseError {
-	constructor(
-		message = "Sessão inválida"
-	) {
-		super(401, message);
-	}
+    constructor(
+        message = "Sessão inválida"
+    ) {
+        super(401, message);
+    }
 }
