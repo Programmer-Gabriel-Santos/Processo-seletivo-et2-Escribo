@@ -11,7 +11,9 @@
     "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "build": "uglifyjs ./src/*.js -o ./dist/server.js --compress"
+    "build-linux": "mkdir dist  && uglifyjs ./src/*.js -o ./dist/server.js --compress",
+    "build-windows": "if not exist dist mkdir dist && uglifyjs ./src/*.js -o ./dist/server.js --compress"
+
   },
   "keywords": [
     "API",
