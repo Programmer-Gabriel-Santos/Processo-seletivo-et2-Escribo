@@ -8,6 +8,13 @@
 
 O desafio consiste uma API RESTful para autenticação de usuários, que permite operações de cadastro (sign up), autenticação (sign in) e recuperação de informações do usuário.
 
+## Testes
+
+
+<img src="https://github.com/Programmer-Gabriel-Santos/Processo-seletivo-et2-Escribo/blob/main/coverage.png?raw=true" width="500" height="300" alt="Resultado dos testes">
+
+
+
 ## Tecnologias
 
 - JavaScript
