@@ -148,7 +148,7 @@ export class UserService {
         const token = this.authenticator.generateToken(payload);
 
         const date = DateTime.now().setZone("America/Sao_Paulo").toFormat("yyyy-MM-dd");
-        console.log("date: ", date);
+        
         await this.userDatabase.updateUltimoLogin(date, userDB.id);
 
         const response = {
