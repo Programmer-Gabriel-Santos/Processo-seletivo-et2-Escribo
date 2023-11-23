@@ -23,3 +23,5 @@ userRouter.post("/signup", userController.signup);
 userRouter.post("/login", userController.login);
 
 userRouter.get("/info", userController.getInfoUser);
+
+userRouter.get("/", (req, res) => { res.send("Hello World!"); });
