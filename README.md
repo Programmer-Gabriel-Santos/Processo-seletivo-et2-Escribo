@@ -34,5 +34,56 @@ O desafio consiste uma API RESTful para autenticação de usuários, que permite
 ## Como testar?
 
 
- <a href="https://documenter.getpostman.com/view/21555755/2s9YeBfZQK" target="_blank">Documentação</a>
+ <a href="https://documenter.getpostman.com/view/21555755/2s9YeBfZQK" target="_blank">Documentação da API</a>
 
+
+## Como rodar localmente?
+
+
+Você precisa ter o Node.js instalado.
+
+Faça o clone desse repositório inserindo em seu terminal o seguinte: git clone https://github.com/Programmer-Gabriel-Santos/Processo-seletivo-et2-Escribo.git
+
+Entre na pasta do projeto: cd Processo-seletivo-et2-Escribo
+
+Use o comando a seguir: npm ci
+
+Para rodar os teste execute o comando: npm run test
+
+Antes de iniciar a aplicação você precisa criar e preencher o arquivo .env da seguinte forma:
+
+DB_HOST=seu-banco
+
+
+DB_USER=seu-usuario
+
+
+DB_PASSWORD=sua-senha
+
+
+DB_DATABASE=seu-database
+
+
+DB_PORT=porta
+
+
+APP_PORT = 3003
+
+
+JWT_KEY = sua-chave-aleatória
+
+
+JWT_EXPIRES_IN = "30m"
+
+
+BCRYPT_SALT_ROUNDS = 12
+
+Para iniciar a aplicação use o comando: npm run build && npm run start
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
