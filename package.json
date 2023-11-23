@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "API RESTful para autenticação de usuários. Signup, sign e get de informações.",
   "main": "server.js",
-  "_moduleAliases": {
-    "@root": ".",
-    "@src": "src"
-  },
   "type": "module",
   "scripts": {
     "start": "node ./src/server.js",
@@ -38,7 +34,6 @@
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.0.1",
     "luxon": "^3.4.4",
-    "module-alias": "^2.2.3",
     "mysql2": "^3.6.3",
     "uuid": "^9.0.1"
   }
