@@ -1,35 +1,23 @@
 import express from "express";
 import cors from "cors";
-import { UserRouter } from "./routes/UserRouter.js";
+import dotenv from "dotenv";
+import { userRouter } from "../src/routes/userRoutes.js";
 
-class Server {
-    constructor() {
-        this.app = express();
-        this.app.use(express.json());
-        this.app.use(cors());
-        this._setupRoutes();
+dotenv.config();
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+const server = app.listen(process.env.PORT || 3003, () => {
+    if (server) {
+        const address = server.address();
+        console.log(`Server is running in http://localhost: ${address.port}`);
+    } else {
+        console.error("Failure upon starting server.");
     }
+});
 
-    _setupRoutes() {
-        this.app.use("/user", UserRouter);
-    }
-
-    _start(port = process.env.APP_PORT || 3003) {
-        this.server = this.app.listen(port, () => {
-            const address = this.server.address();
-            console.log(`Server is running in http://localhost:${address.port}`);
-        });
-    }
-
-    _stop() {
-        if (this.server) {
-            this.server.close(() => {
-                console.log("Server stopped");
-            });
-        }
-    }
-}
-
-const server = new Server();
-server._start();
+app.use("/user", userRouter);
 

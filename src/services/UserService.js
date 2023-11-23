@@ -1,9 +1,10 @@
-import { AuthenticationError } from "../errors/AuthenticationError";
-import { AuthorizationError } from "../errors/AuthorizationError";
-import { DuplicateEmailError } from "../errors/DuplicateEmailError";
-import { EmailInvalid } from "../errors/EmailInvalid";
-import { ParamsError } from "../errors/ParamsError";
-import { User, UserRole } from "../model/User";
+import { DateTime } from "luxon";
+import { AuthenticationError } from "../errors/AuthenticationError.js";
+import { AuthorizationError } from "../errors/AuthorizationError.js";
+import { DuplicateEmailError } from "../errors/DuplicateEmailError.js";
+import { EmailInvalid } from "../errors/EmailInvalid.js";
+import { ParamsError } from "../errors/ParamsError.js";
+import { User, UserRole } from "../model/User.js";
 
 export class UserService {
     constructor(
@@ -19,12 +20,12 @@ export class UserService {
     }
 
     async signup(input) {
-        const { nome, email, senha, telefones } = input;
+
+        let { nome, email, senha, telefones } = input;
 
         if (!nome || !email || !senha || !telefones || telefones.length < 1) {
             throw new ParamsError();
         }
-
 
         if (typeof nome !== "string") {
             throw new ParamsError();
@@ -71,10 +72,21 @@ export class UserService {
         const id = this.idGenerator.generate();
         const hashedPassword = await this.hashManager.hash(senha);
 
-        const options = { timeZone: "America/Sao_Paulo" };
-        const date = new Date().toLocaleDateString("pt-BR", options);
+        const date = DateTime.now().setZone("America/Sao_Paulo").toFormat("yyyy-MM-dd");
 
-        const user = new User(id, nome, email, hashedPassword, telefones, UserRole.NORMAL, date, date, date);
+        const phonesForString = JSON.stringify(telefones);
+
+        const user = new User(
+            id,
+            nome,
+            email,
+            hashedPassword,
+            phonesForString,
+            UserRole.NORMAL,
+            date,
+            date,
+            date
+        );
 
         await this.userDatabase.insertUser(user);
 
@@ -135,13 +147,18 @@ export class UserService {
 
         const token = this.authenticator.generateToken(payload);
 
+        const date = DateTime.now().setZone("America/Sao_Paulo").toFormat("yyyy-MM-dd");
+        console.log("date: ", date);
+        await this.userDatabase.updateUltimoLogin(date, userDB.id);
+
         const response = {
             id: userDB.id,
             data_criacao: userDB.data_criacao,
             data_atualizacao: userDB.data_atualizacao,
-            ultimo_login: userDB.ultimo_login,
+            ultimo_login: date,
             token
         };
+        console.log|("response: ", response);
 
         return response;
     }

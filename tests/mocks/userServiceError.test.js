@@ -218,7 +218,6 @@ describe("Teste de unidade de erro para UserService - login", () => {
 
         } catch (error) {
             if (error instanceof BaseError) {
-                console.log(error.message);
                 expect(error.message).toBe("Parâmetros inválidos ou faltando");
                 expect(error.statusCode).toBe(400);
             }

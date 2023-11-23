@@ -3,8 +3,6 @@ import { users } from "./usersData";
 
 export class UserDataBaseMock extends BaseDataBase {
     
-    TABLE_USERS = "Escribo_users";
-
     selectUserByEmail = async (email) => {
 
         const user = users.find(user => user.email === email) ;
@@ -20,4 +18,6 @@ export class UserDataBaseMock extends BaseDataBase {
     };
 
     insertUser = async () => { };
+
+    updateUltimoLogin = async () => { };
 }

@@ -1,6 +1,6 @@
 
 
-import { BaseError } from "./BaseError";
+import { BaseError } from "./BaseError.js";
 
 export class DuplicateEmailError extends BaseError {
     constructor(

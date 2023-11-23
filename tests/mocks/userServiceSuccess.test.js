@@ -4,6 +4,7 @@ import { IdGeneratorMock } from "./security/IdGeneratorMock";
 import { UserDataBaseMock } from "./data/UserDataBaseMock";
 import { UserService } from "../../src/services/UserService";
 import { users } from "./data/usersData";
+import { DateTime } from "luxon";
 
 
 describe("testando casos de sucesso para UserService", () => {
@@ -23,7 +24,7 @@ describe("testando casos de sucesso para UserService", () => {
             senha: "senha-mock",
             telefones: [{ numero: "123456789", ddd: "11" }],
         };
-        const date = new Date().toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+        const date = DateTime.now().setZone("America/Sao_Paulo").toFormat("yyyy-MM-dd");
         const expectedResponse = {
             id: "id-mock",
             data_criacao: date,
@@ -44,11 +45,14 @@ describe("testando casos de sucesso para UserService", () => {
             senha: "senha-mock",
         };
 
+        const date = DateTime.now().setZone("America/Sao_Paulo").toFormat("yyyy-MM-dd");
+
+
         const expectedResponse = {
             id: "id-mock",
-            data_criacao: "22/11/2023",
-            data_atualizacao: "22/11/2023",
-            ultimo_login: "22/11/2023",
+            data_criacao: "2023-11-22",
+            data_atualizacao: "2023-11-22",
+            ultimo_login: date,
             token: "token-mock",
         };
 
