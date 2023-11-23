@@ -78,12 +78,13 @@ JWT_EXPIRES_IN = "30m"
 
 BCRYPT_SALT_ROUNDS = 12
 
-Para iniciar a aplicação use o comando: npm run build && npm run start
+Para iniciar a aplicação no windows use o comando: npm run build-windows && npm run start
+
+
+Para iniciar a aplicação no linux use o comando: npm run build-linux && npm run start
 
 
 
-<br/>
-<br/>
 <br/>
 <br/>
 <br/>
