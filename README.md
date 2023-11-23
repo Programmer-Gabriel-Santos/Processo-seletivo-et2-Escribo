@@ -8,6 +8,18 @@
 
 O desafio consiste uma API RESTful para autenticação de usuários, que permite operações de cadastro (sign up), autenticação (sign in) e recuperação de informações do usuário.
 
+## Tecnologias
+
+- JavaScript
+- NodeJS
+- Express
+- Jest
+- Knex
+- bcrypt
+- JWT
+- MySQL
+- POO
+
 ## Deploy
 
 ####  <li>AWS</li>
