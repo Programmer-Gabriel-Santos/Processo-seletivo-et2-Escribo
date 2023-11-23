@@ -5,12 +5,13 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/server.js",
+    "start": "node ./dist/server.js",
     "dev": "node --watch ./src/server.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "clear-cache": "jest --clearCache",
+    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "build": "uglifyjs ./src/*.js -o ./dist/server.js --compress"
   },
   "keywords": [
     "API",
@@ -35,6 +36,7 @@
     "knex": "^3.0.1",
     "luxon": "^3.4.4",
     "mysql2": "^3.6.3",
+    "uglify-js": "^3.17.4",
     "uuid": "^9.0.1"
   }
 }
