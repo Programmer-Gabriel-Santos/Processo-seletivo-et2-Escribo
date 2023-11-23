@@ -11,7 +11,7 @@ O desafio consiste uma API RESTful para autenticação de usuários, que permite
 ## Testes
 
 
-<img src="https://github.com/Programmer-Gabriel-Santos/Processo-seletivo-et2-Escribo/blob/main/coverage.png?raw=true" width="900" height="300" alt="Resultado dos testes">
+<img src="https://github.com/Programmer-Gabriel-Santos/Processo-seletivo-et2-Escribo/blob/main/coverage.png?raw=true" width="900" height="250" alt="Resultado dos testes">
 
 
 
