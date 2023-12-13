@@ -56,7 +56,7 @@ Para rodar os teste execute o comando: npm run test
 
 Antes de iniciar a aplicação você precisa criar e preencher o arquivo .env da seguinte forma:
 
-DB_HOST=seu-banco
+DB_HOST=seu-banco-mysql
 
 
 DB_USER=seu-usuario
