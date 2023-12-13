@@ -37,6 +37,9 @@ O desafio consiste uma API RESTful para autenticação de usuários, que permite
 
  <a href="https://documenter.getpostman.com/view/21555755/2s9YeBfZQK" target="_blank">Documentação da API</a>
 
+ 
+ <a href="http://ec2-3-12-150-215.us-east-2.compute.amazonaws.com:3003/user" target="_blank">Hello World da api</a>
+
 
 ## Como rodar localmente?
 
