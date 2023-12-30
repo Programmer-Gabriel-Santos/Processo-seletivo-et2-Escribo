@@ -35,6 +35,10 @@ O desafio consiste uma API RESTful para autenticação de usuários, que permite
 ## Como testar?
 
 
+
+OBS: a execução dessa api na aws está tempoririamente supensa, pois há outra aplicação utilizando os recursos do servidor.
+
+
  <a href="https://documenter.getpostman.com/view/21555755/2s9YeBfZQK" target="_blank">Documentação da API</a>
 
  
